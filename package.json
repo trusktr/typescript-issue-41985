@@ -14,8 +14,8 @@
 	"scripts": {
 		"LUME SCRIPTS XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX": "",
 		"clean": "lume clean",
-		"build": "npm run copy-assets && lume build",
-		"dev": "npm run copy-assets && lume dev",
+		"build": "lume build && npm run copy-assets",
+		"dev": "lume dev",
 		"typecheck": "lume typecheck",
 		"typecheck:watch": "lume typecheckWatch",
 		"test": "lume test",
