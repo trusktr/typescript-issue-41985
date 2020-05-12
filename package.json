@@ -29,7 +29,7 @@
 		"postversion": "lume postVersionHook",
 		"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX OTHER SCRIPTS": "",
 		"prepare": "npm run build",
-		"copy-assets": "rm -rf ./dist/assets && cp -R ./src/assets ./dist/assets"
+		"copy-assets": "rm -rf ./dist/assets && mkdir -p ./dist && cp -R ./src/assets ./dist/assets"
 	},
 	"dependencies": {
 		"@lume/element": "0.0.11"
