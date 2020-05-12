@@ -28,7 +28,7 @@
 		"version": "lume versionHook",
 		"postversion": "lume postVersionHook",
 		"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX OTHER SCRIPTS": "",
-		"prepack": "npm run build"
+		"prepare": "npm run build"
 	},
 	"dependencies": {
 		"@lume/element": "0.0.11"
