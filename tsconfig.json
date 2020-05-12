@@ -1,0 +1,7 @@
+{
+	"extends": "./node_modules/@lume/cli/config/ts.config.json",
+	"compilerOptions": {
+		"skipLibCheck": true, // TODO set back to false, fix any issue
+		"jsx": "preserve"
+	}
+}

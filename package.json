@@ -1,0 +1,52 @@
+{
+	"name": "@velodyne/authentication-ui",
+	"version": "0.0.0",
+	"description": "Authentication UI for logging into Velodyne frontend applications.",
+	"homepage": "https://bitbucket.org/velodyne_sw/authentication-ui",
+	"type": "module",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"exports COMMENT:": "This removes 'dist' from import statements, as well as replaces the 'main' field. See https://github.com/nodejs/node/issues/14970#issuecomment-571887546",
+	"exports": {
+		".": "./dist/index.js",
+		"./": "./dist/"
+	},
+	"scripts": {
+		"LUME SCRIPTS XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX": "",
+		"clean": "lume clean",
+		"build": "lume build",
+		"dev": "lume dev",
+		"typecheck": "lume typecheck",
+		"typecheck:watch": "lume typecheckWatch",
+		"test": "lume test",
+		"test:debug": "lume testDebug",
+		"prettier": "lume prettier",
+		"prettier:check": "lume prettierCheck",
+		"release:patch": "lume releasePatch",
+		"release:minor": "lume releaseMinor",
+		"release:major": "lume releaseMajor",
+		"version": "lume versionHook",
+		"postversion": "lume postVersionHook",
+		"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX OTHER SCRIPTS": ""
+	},
+	"dependencies": {
+		"@lume/element": "0.0.11"
+	},
+	"devDependencies": {
+		"@lume/cli": "^2.1.0",
+		"prettier": "^1.19.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git@bitbucket.org:velodyne_sw/authentication-ui.git"
+	},
+	"bugs": {
+		"url": "https://velodynelidar.atlassian.net/browse/VELLA"
+	},
+	"keywords": [
+		"ui",
+		"authentication",
+		"login",
+		"beam"
+	]
+}
