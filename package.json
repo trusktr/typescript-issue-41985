@@ -14,8 +14,8 @@
 	"scripts": {
 		"LUME SCRIPTS XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX": "",
 		"clean": "lume clean",
-		"build": "lume build",
-		"dev": "lume dev",
+		"build": "npm run copy-assets && lume build",
+		"dev": "npm run copy-assets && lume dev",
 		"typecheck": "lume typecheck",
 		"typecheck:watch": "lume typecheckWatch",
 		"test": "lume test",
@@ -28,7 +28,8 @@
 		"version": "lume versionHook",
 		"postversion": "lume postVersionHook",
 		"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX OTHER SCRIPTS": "",
-		"prepare": "npm run build"
+		"prepare": "npm run build",
+		"copy-assets": "rm -rf ./dist/assets && cp -R ./src/assets ./dist/assets"
 	},
 	"dependencies": {
 		"@lume/element": "0.0.11"
