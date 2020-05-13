@@ -1,5 +1,4 @@
 import {Element, css, input, reactive, attribute} from '@lume/element'
-// import type {} from '@lume/element/dist/jsx' // TODO update TypeScript for new import `type syntax`
 import * as loginBg from './assets/images/Login-Screen_BG.jpg'
 import * as loginHeader from './assets/images/Login_Logo-Header-01.svg'
 
@@ -199,6 +198,7 @@ export class Login extends Element {
 			padding-bottom: 24px;
 			border-radius: 4px;
 			text-align: center;
+			box-sizing: border-box;
 		}
 
 		.text-field-2 {
@@ -220,9 +220,8 @@ export class Login extends Element {
 
 		.submit-button {
 			position: relative;
-			left: 19%;
-			top: 0%;
-			right: 0%;
+			left: 50%;
+			transform: translateX(-50%);
 			bottom: auto;
 			display: inline-block;
 			min-width: 232px;
