@@ -33,20 +33,20 @@ export class Login extends Element {
   }
 
   template = (
-    <div className="login-container">
-      <div className="login-wrap">
-        <div className="form-block w-form">
-          <form name="email-form" data-name="Email Form" className="form" onSubmit={this.#onFormSubmit}>
+    <div class="login-container">
+      <div class="login-wrap">
+        <div class="form-block w-form">
+          <form name="email-form" data-name="Email Form" class="form" onSubmit={this.#onFormSubmit}>
             {
               (this.#user = input(
-                <input type="text" className="text-field w-input" name="Email" data-name="Email" placeholder="Email" />
+                <input type="text" class="text-field w-input" name="Email" data-name="Email" placeholder="Email" />
               ))
             }
             {
               (this.#pass = input(
                 <input
                   type="password"
-                  className="text-field w-input"
+                  class="text-field w-input"
                   name="Password"
                   data-name="Password"
                   placeholder="Password"
@@ -54,8 +54,8 @@ export class Login extends Element {
                 />
               ))
             }
-            <p className="paragraph">
-              <a href="#" className="link">
+            <p class="paragraph">
+              <a href="#" class="link">
                 Don't remember your password?
               </a>
             </p>
@@ -63,14 +63,14 @@ export class Login extends Element {
               type="submit"
               value="Login"
               data-wait="Please wait..."
-              className="submit-button w-button"
+              class="submit-button w-button"
               disabled={this.authenticating}
             />
           </form>
-          <div className="w-form-done">
+          <div class="w-form-done">
             <div>Thank you! Your submission has been received!</div>
           </div>
-          <div className="w-form-fail">
+          <div class="w-form-fail">
             <div>Oops! Something went wrong while submitting the form.</div>
           </div>
         </div>
