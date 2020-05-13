@@ -36,7 +36,7 @@
 	},
 	"devDependencies": {
 		"@lume/cli": "^2.1.1",
-		"prettier": "^1.19.1"
+		"prettier": "2.0.5"
 	},
 	"repository": {
 		"type": "git",
