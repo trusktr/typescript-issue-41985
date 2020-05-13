@@ -85,6 +85,87 @@ export class Login extends Element {
 	)
 
 	static css = css`
+		/* Default Webflow styles */
+		.w-form {
+			margin: 0 0 15px;
+		}
+		.w-form-done {
+			display: none;
+			padding: 20px;
+			text-align: center;
+			background-color: #dddddd;
+		}
+		.w-form-fail {
+			display: none;
+			margin-top: 10px;
+			padding: 10px;
+			background-color: #ffdede;
+		}
+		.w-input,
+		.w-select {
+			display: block;
+			width: 100%;
+			height: 38px;
+			padding: 8px 12px;
+			margin-bottom: 10px;
+			font-size: 14px;
+			line-height: 1.428571429;
+			color: #333333;
+			vertical-align: middle;
+			background-color: #ffffff;
+			border: 1px solid #cccccc;
+		}
+		.w-input:-moz-placeholder,
+		.w-select:-moz-placeholder {
+			color: #999;
+		}
+		.w-input::-moz-placeholder,
+		.w-select::-moz-placeholder {
+			color: #999;
+			opacity: 1;
+		}
+		.w-input:-ms-input-placeholder,
+		.w-select:-ms-input-placeholder {
+			color: #999;
+		}
+		.w-input::-webkit-input-placeholder,
+		.w-select::-webkit-input-placeholder {
+			color: #999;
+		}
+		.w-input:focus,
+		.w-select:focus {
+			border-color: #3898ec;
+			outline: 0;
+		}
+		.w-input[disabled],
+		.w-select[disabled],
+		.w-input[readonly],
+		.w-select[readonly],
+		fieldset[disabled] .w-input,
+		fieldset[disabled] .w-select {
+			cursor: not-allowed;
+			background-color: #eeeeee;
+		}
+		textarea.w-input,
+		textarea.w-select {
+			height: auto;
+		}
+		.w-button {
+			display: inline-block;
+			padding: 9px 15px;
+			background-color: #3898ec;
+			color: white;
+			border: 0;
+			line-height: inherit;
+			text-decoration: none;
+			cursor: pointer;
+			border-radius: 0;
+		}
+		input.w-button {
+			-webkit-appearance: button;
+		}
+
+		/* Custom styles (from Kyle in Webflow) */
 		.login-container {
 			width: 100%;
 			height: 100%;
