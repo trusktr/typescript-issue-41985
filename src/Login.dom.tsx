@@ -253,7 +253,7 @@ export class Login extends Element {
 		}
 
 		.paragraph {
-			visibility: hidden; /* TODO re-enable when we add password reset */
+			display: none; /* TODO re-enable when we add password reset */
 			margin-bottom: 0px;
 			color: #94b8ff;
 			font-size: 16px;
