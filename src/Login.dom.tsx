@@ -1,4 +1,4 @@
-import {Element, css, input, reactive, attribute} from '@lume/element'
+import {Element, css, reactive, attribute} from '@lume/element'
 import * as loginBg from './assets/images/Login-Screen_BG.jpg'
 import * as loginHeader from './assets/images/Login_Logo-Header-01.svg'
 
@@ -12,53 +12,50 @@ export interface LoginAttributes extends JSX.HTMLAttributes<Login> {
 export class Login extends Element {
 	@reactive @attribute authenticating = false
 
-	#user?: HTMLInputElement
-	#pass?: HTMLInputElement
+	private __user?: HTMLInputElement
+	private __pass?: HTMLInputElement
 
-	#onFormSubmit = async (e: Event) => {
+	private __onFormSubmit = async (e: Event) => {
 		// TODO jpea, allow default form behavior if someone wants it.
 		e.preventDefault()
 
-		if (!this.#user || !this.#pass) throw new Error('Not possible!')
+		if (!this.__user || !this.__pass) throw new Error('Not possible!')
 
 		this.dispatchEvent(
 			new CustomEvent('submit', {
 				detail: {
-					username: this.#user.value,
-					password: this.#pass.value,
+					username: this.__user.value,
+					password: this.__pass.value,
 				},
 			}),
 		)
 	}
 
 	template = (
-		<div class="login-container">
+		<div classList={{'login-container': true, authenticating: this.authenticating}}>
 			<div class="login-wrap">
 				<div class="form-block w-form">
-					<form name="email-form" data-name="Email Form" class="form" onSubmit={this.#onFormSubmit}>
-						{
-							(this.#user = input(
-								<input
-									type="text"
-									class="text-field w-input"
-									name="Email"
-									data-name="Email"
-									placeholder="Email"
-								/>,
-							))
-						}
-						{
-							(this.#pass = input(
-								<input
-									type="password"
-									class="text-field w-input"
-									name="Password"
-									data-name="Password"
-									placeholder="Password"
-									required={true}
-								/>,
-							))
-						}
+					<form name="email-form" data-name="Email Form" class="form" onSubmit={this.__onFormSubmit}>
+						<input
+							ref={this.__user}
+							type="text"
+							class="text-field w-input"
+							name="Email"
+							data-name="Email"
+							placeholder="Email"
+							required={true}
+							disabled={this.authenticating}
+						/>
+						<input
+							ref={this.__pass}
+							type="password"
+							class="text-field w-input"
+							name="Password"
+							data-name="Password"
+							placeholder="Password"
+							required={true}
+							disabled={this.authenticating}
+						/>
 						<p class="paragraph">
 							<a href="#" class="link">
 								Don't remember your password?
@@ -84,7 +81,8 @@ export class Login extends Element {
 	)
 
 	static css = css`
-		/* Default Webflow styles */
+		/* Webflow styles //////////////////////////////////////////////////////////////////// */
+		/* TODO cleanup, remove unused styles */
 		.w-form {
 			margin: 0 0 15px;
 		}
@@ -143,7 +141,7 @@ export class Login extends Element {
 		fieldset[disabled] .w-input,
 		fieldset[disabled] .w-select {
 			cursor: not-allowed;
-			background-color: #eeeeee;
+			opacity: 0.5; /*LINE CHANGED*/
 		}
 		textarea.w-input,
 		textarea.w-select {
@@ -164,7 +162,12 @@ export class Login extends Element {
 			-webkit-appearance: button;
 		}
 
-		/* Custom styles (from Kyle in Webflow) */
+		/* Custom styles (from Kyle in Webflow) //////////////////////////////////////////////////////////////////// */
+		.login-container.authenticating,
+		.login-container.authenticating * {
+			cursor: wait;
+		}
+
 		.login-container {
 			width: 100%;
 			height: 100%;
@@ -250,6 +253,7 @@ export class Login extends Element {
 		}
 
 		.paragraph {
+			visibility: hidden; /* TODO re-enable when we add password reset */
 			margin-bottom: 0px;
 			color: #94b8ff;
 			font-size: 16px;
