@@ -32,7 +32,7 @@
 		"copy-assets": "rm -rf ./dist/assets && mkdir -p ./dist && cp -R ./src/assets ./dist/assets"
 	},
 	"dependencies": {
-		"@lume/element": "0.0.13"
+		"@lume/element": "0.0.15"
 	},
 	"devDependencies": {
 		"@lume/cli": "^2.1.1",

@@ -11,7 +11,25 @@ export interface LoginAttributes extends JSX.HTMLAttributes<Login> {
 
 export class Login extends Element {
 	@reactive @attribute authenticating = false
+	@reactive @attribute errorMessage: string = ''
 
+	async savePassword() {
+		const win = window as any
+
+		// TODO make this work
+		try {
+			if (win.PasswordCredential && this.__form) {
+				console.log('Save password!')
+				// const c = new win.PasswordCredential(this.__form)
+				const c = await (navigator as any).credentials.create({
+					password: this.__form,
+				})
+				return navigator.credentials.store(c)
+			}
+		} catch (e) {}
+	}
+
+	private __form?: HTMLFormElement
 	private __user?: HTMLInputElement
 	private __pass?: HTMLInputElement
 
@@ -35,7 +53,13 @@ export class Login extends Element {
 		<div classList={{'login-container': true, authenticating: this.authenticating}}>
 			<div class="login-wrap">
 				<div class="form-block w-form">
-					<form name="email-form" data-name="Email Form" class="form" onSubmit={this.__onFormSubmit}>
+					<form
+						ref={this.__form}
+						name="email-form"
+						data-name="Email Form"
+						class="form"
+						onSubmit={this.__onFormSubmit}
+					>
 						<input
 							ref={this.__user}
 							type="text"
@@ -45,6 +69,7 @@ export class Login extends Element {
 							placeholder="Email"
 							required={true}
 							disabled={this.authenticating}
+							autocomplete="username"
 						/>
 						<input
 							ref={this.__pass}
@@ -55,6 +80,7 @@ export class Login extends Element {
 							placeholder="Password"
 							required={true}
 							disabled={this.authenticating}
+							autocomplete="current-password"
 						/>
 						<p class="paragraph">
 							<a href="#" class="link">
@@ -72,8 +98,8 @@ export class Login extends Element {
 					<div class="w-form-done">
 						<div>Thank you! Your submission has been received!</div>
 					</div>
-					<div class="w-form-fail">
-						<div>Oops! Something went wrong while submitting the form.</div>
+					<div class={'w-form-fail'} style={{display: this.errorMessage ? 'block' : 'none'}}>
+						<p>{this.errorMessage}</p>
 					</div>
 				</div>
 			</div>
@@ -108,7 +134,6 @@ export class Login extends Element {
 			font-size: 14px;
 			line-height: 1.428571429;
 			color: #333333;
-			vertical-align: middle;
 			background-color: #ffffff;
 			border: 1px solid #cccccc;
 		}
