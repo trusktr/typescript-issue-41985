@@ -89,11 +89,12 @@ export class Login extends Element {
 						</p>
 						<input
 							type="submit"
-							value="Login"
+							value="Login!"
 							data-wait="Please wait..."
 							class="submit-button w-button"
 							disabled={this.authenticating}
 						/>
+						<a href={"https://www.google.com/"}>Forgot password?</a>
 					</form>
 					<div class="w-form-done">
 						<div>Thank you! Your submission has been received!</div>
