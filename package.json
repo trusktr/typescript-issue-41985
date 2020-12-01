@@ -35,7 +35,7 @@
 		"@lume/element": "git+ssh://git@bitbucket.org:velodyne_sw/lume-element.git#74ec4a6fc1ba89482993e1830f14eccbdc4c0664"
 	},
 	"devDependencies": {
-		"@lume/cli": "git+ssh://git@bitbucket.org:velodyne_sw/lume-cli.git#533539168c2c8ffed7dee112daebb0ef04bdf143",
+		"@lume/cli": "git+ssh://git@bitbucket.org:velodyne_sw/lume-cli.git#v0.2.3",
 		"prettier": "2.0.5"
 	},
 	"repository": {
