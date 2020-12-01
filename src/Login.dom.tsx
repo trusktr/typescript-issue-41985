@@ -1,22 +1,24 @@
-import {Element, css, reactive, attribute} from '@lume/element'
+import {Element, reactive, attribute, element, booleanAttribute} from '@lume/element'
 import * as loginBg from './assets/images/Login-Screen_BG.jpg'
 import * as loginHeader from './assets/images/Login_Logo-Header-01.svg'
 
 export interface LoginAttributes extends JSX.HTMLAttributes<Login> {
 	authenticating?: boolean
-	// TODO jpea, hook these up. If a message is provided, then show it.
-	errorMessage?: string
-	successMessage?: string
+	'error-message'?: string
+	// TODO hook this up. If a message is provided, then show it upon success.
+	'success-message'?: string
 }
 
+@element('log-in')
 export class Login extends Element {
-	@reactive @attribute authenticating = false
-	@reactive @attribute errorMessage: string = ''
+	@reactive @booleanAttribute(false) authenticating = false
+	@reactive @attribute errorMessage = ''
 
 	async savePassword() {
 		const win = window as any
 
-		// TODO make this work
+		// TODO We probably don't need this. I thought we did when my Chrome
+		// setting to remember passwords somehow got disabled.
 		try {
 			if (win.PasswordCredential && this.__form) {
 				console.log('Save password!')
@@ -27,11 +29,13 @@ export class Login extends Element {
 				return navigator.credentials.store(c)
 			}
 		} catch (e) {}
+
+		return
 	}
 
-	private __form?: HTMLFormElement
-	private __user?: HTMLInputElement
-	private __pass?: HTMLInputElement
+	private __form?: HTMLFormElement = undefined
+	private __user?: HTMLInputElement = undefined
+	private __pass?: HTMLInputElement = undefined
 
 	private __onFormSubmit = async (e: Event) => {
 		// TODO jpea, allow default form behavior if someone wants it.
@@ -40,7 +44,7 @@ export class Login extends Element {
 		if (!this.__user || !this.__pass) throw new Error('Not possible!')
 
 		this.dispatchEvent(
-			new CustomEvent('submit', {
+			new CustomEvent('authsubmit', {
 				detail: {
 					username: this.__user.value,
 					password: this.__pass.value,
@@ -49,7 +53,7 @@ export class Login extends Element {
 		)
 	}
 
-	template = (
+	template = () => (
 		<div classList={{'login-container': true, authenticating: this.authenticating}}>
 			<div class="login-wrap">
 				<div class="form-block w-form">
@@ -106,7 +110,7 @@ export class Login extends Element {
 		</div>
 	)
 
-	static css = css`
+	static css = /* css */ `
 		/* Webflow styles //////////////////////////////////////////////////////////////////// */
 		/* TODO cleanup, remove unused styles */
 		.w-form {
@@ -303,8 +307,6 @@ export class Login extends Element {
 		}
 	`
 }
-
-customElements.define('log-in', Login)
 
 /* eslint-disable typescript/no-namespace */
 declare global {

@@ -14,8 +14,9 @@
 	"scripts": {
 		"LUME SCRIPTS XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX": "",
 		"clean": "lume clean",
-		"build": "lume build && npm run copy-assets",
+		"build": "lume build",
 		"dev": "lume dev",
+		"copyAssets": "lume copyAssets",
 		"typecheck": "lume typecheck",
 		"typecheck:watch": "lume typecheckWatch",
 		"test": "lume test",
@@ -28,14 +29,13 @@
 		"version": "lume versionHook",
 		"postversion": "lume postVersionHook",
 		"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX OTHER SCRIPTS": "",
-		"prepare": "npm run build",
-		"copy-assets": "rm -rf ./dist/assets && mkdir -p ./dist && cp -R ./src/assets ./dist/assets"
+		"prepare": "npm run build"
 	},
 	"dependencies": {
-		"@lume/element": "0.0.15"
+		"@lume/element": "git+ssh://git@bitbucket.org:velodyne_sw/lume-element.git#74ec4a6fc1ba89482993e1830f14eccbdc4c0664"
 	},
 	"devDependencies": {
-		"@lume/cli": "^2.1.1",
+		"@lume/cli": "git+ssh://git@bitbucket.org:velodyne_sw/lume-cli.git#533539168c2c8ffed7dee112daebb0ef04bdf143",
 		"prettier": "2.0.5"
 	},
 	"repository": {
