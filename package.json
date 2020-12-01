@@ -1,6 +1,6 @@
 {
 	"name": "@velodyne/authentication-ui",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "Authentication UI for logging into Velodyne frontend applications.",
 	"homepage": "https://bitbucket.org/velodyne_sw/authentication-ui",
 	"type": "module",
