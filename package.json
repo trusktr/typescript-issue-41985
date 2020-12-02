@@ -32,10 +32,10 @@
 		"prepare": "npm run build"
 	},
 	"dependencies": {
-		"@lume/element": "git+ssh://git@bitbucket.org:velodyne_sw/lume-element.git#74ec4a6fc1ba89482993e1830f14eccbdc4c0664"
+		"@lume/element": "git+ssh://git@bitbucket.org:velodyne_sw/lume-element.git#v0.3.2"
 	},
 	"devDependencies": {
-		"@lume/cli": "git+ssh://git@bitbucket.org:velodyne_sw/lume-cli.git#v0.2.3",
+		"@lume/cli": "git+ssh://git@bitbucket.org:velodyne_sw/lume-cli.git#v0.3.0",
 		"prettier": "2.0.5"
 	},
 	"repository": {
