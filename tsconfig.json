@@ -1,10 +1,39 @@
 {
-	"extends": "./node_modules/@lume/cli/config/ts.config.json",
 	"compilerOptions": {
-		"jsx": "preserve",
-		"noUnusedLocals": false
-
 		// this works, but the /* @jsxImportSource solid-js */ comment in Login.dom.tsx does not work.
 		// "jsxImportSource": "solid-js"
-	}
+
+		"noImplicitAny": true,
+
+		"lib": ["es2018", "dom"],
+		"target": "es2018",
+		"module": "esnext",
+		"moduleResolution": "node",
+
+		// Code strictness
+		"noUnusedLocals": false,
+
+		// Language feature options
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"useDefineForClassFields": false,
+		"preserveConstEnums": true,
+		// JSX is preserved so that we can handle JSX with babel-preset-solid
+		// (for use with @lume/element).
+		"jsx": "preserve",
+
+		"pretty": true,
+		"declaration": true,
+		"noEmitOnError": false,
+		"sourceMap": true,
+		"removeComments": true,
+
+		"paths": {"*": ["*"]},
+		"rootDir": "./src",
+		"baseUrl": "./",
+		"outDir": "./dist"
+		// "typeRoots": ["./node_modules/@types", "./node_modules/@lume/cli/node_modules/@types"]
+	},
+	"compileOnSave": false,
+	"include": ["./src/**/*"]
 }
